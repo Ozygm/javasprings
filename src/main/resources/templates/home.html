@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+	crossorigin="anonymous">
+<head>
+<meta charset="UTF-8">
+<title>Index</title>
+</head>
+<body>
+
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="/shows/list">Stockolmo's</a>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarNav"
+				aria-controls="navbarNav" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<ul class="navbar-nav">
+			<li class="nav-item"><a class="nav-link active"
+						aria-current="page" href="/shows/list/add">Agregar Producto</a></li>
+						
+				<li class="nav-item"><a class="nav-link" href="/logout">Salir</a></li>
+				
+			</ul>
+		</div>
+	</nav>
+	<div class="container my-5">
+    <h5 class="text-center">BIENVENIDO USUARIO</h5>
+		<table class="table table-dark table-striped">
+			<thead>
+				<tr>
+					<th scope="col">ID</th>
+					<th scope="col">Nombre</th>
+					<th scope="col">Stock</th>
+					<!--<th scope="col">Precio</th>-->
+					<th scope="col">ELIMINAR</th>
+					<th scope="col">EDITAR</th>
+          
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="lshows : ${shows} ">
+					<th th:text="${lshows.id}"scope="row"></th>
+					<td th:text="${lshows.showTitle}"></td>
+					<td th:text="${lshows.showNetwork}"></td>
+					<td><a th:href="@{/shows/list/delete(id=${lshows.Id})}"><button class="btn btn-danger" >BORRAR</button></a></td>
+					<td><a th:href="@{/shows/list/edit(id=${lshows.Id})}"><button class="btn btn-primary" >EDITAR</button></a></td> 
+        <!--  <td><a th:href="@{/shows/list/rating(id=${lshows.Id})}"><button class="btn btn-secondary" >Valorar</button></a></td> -->
+				</tr>
+				
+			</tbody>
+		</table>
+	<button type="button" class="btn btn-info">Informe de mercado</button>
+	</div>
+</body>
+</html>

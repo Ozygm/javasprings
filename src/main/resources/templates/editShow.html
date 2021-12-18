@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+	crossorigin="anonymous">
+<head>
+<meta charset="UTF-8">
+<title>EDITAR</title>
+</head>
+<body>
+
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="/shows/list">Stockolmo's</a>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarNav"
+				aria-controls="navbarNav" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav">
+				</ul>
+			</div>
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link active"
+					aria-current="page" href="/shows/list/add">Agregar Producto</a></li>
+				<li class="nav-item"><a class="nav-link" href="#">Salir</a></li>
+
+			</ul>
+		</div>
+	</nav>
+	<div class="container my-5">
+		<table class="table table-dark table-striped">
+			<thead>
+				<tr>
+					<th scope="col">ID</th>
+					<th scope="col">NOMBRE</th>
+					<th scope="col">STOCK</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="lshows : ${show} ">
+					<th th:text="${lshows.id}" scope="row"></th>
+					<td th:text="${lshows.showTitle}"></td>
+					<td th:text="${lshows.showNetwork}"></td>
+				</tr>
+			</tbody>
+		</table>
+
+		<form class="form-horizontal" th:action="@{/shows/list/edit}"
+			th:object="${shows}" method="post">
+			<div class="container my-5">
+			
+			<input class="form-control form-control-lg my-2" type="hidden" th:value="${show.id}" name="id">
+
+				<p>
+					Title: <input class="form-control form-control-lg my-2"
+						type="text" placeholder="Nombre del show"
+						aria-label=".form-control-lg example" name="showTitle" th:field="${show.showTitle}">
+				</p>
+
+				<p>
+					Network: <input class="form-control form-control-lg my-2"
+						type="text" placeholder="5"
+						aria-label=".form-control-lg example" name="showNetwork" th:field="${show.showNetwork}">
+				</p>
+
+				<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+					<button class="btn btn-success me-md-2" type="submit">EDITAR</button>
+				</div>
+
+			</div>
+		</form>
+	</div>
+</body>
+</html>

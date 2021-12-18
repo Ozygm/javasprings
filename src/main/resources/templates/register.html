@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+	crossorigin="anonymous">
+<head>
+<meta charset="UTF-8">
+<title>Register</title>
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="/shows/list">TV Shows</a>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarNav"
+				aria-controls="navbarNav" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav">
+					<li class="nav-item"><a class="nav-link active"
+						aria-current="page" href="/login">Login</a></li>
+				</ul>
+			</div>
+			<ul class="navbar-nav">
+			</ul>
+		</div>
+	</nav>
+
+	<h2 class="text-center">Ingresa los datos para registrarte</h2>
+	<form class="form-horizontal" th:action="@{/register}"
+		th:object="${user}" method="post">
+		<div class="container my-5">
+
+			<p>
+				Direccion de email: <input class="form-control form-control-lg my-2"
+					type="text" placeholder="email@email.com"
+					aria-label=".form-control-lg example" name="email">
+			</p>
+
+			<p>
+				Nombre de usuario: <input class="form-control form-control-lg my-2"
+					type="text" placeholder="Nombre de usuario"
+					aria-label=".form-control-lg example" name="username">
+			</p>
+
+			<p>
+				Contraseña: <input class="form-control form-control-lg my-2"
+					type="password" placeholder="Contraseña"
+					aria-label=".form-control-lg example" name="password">
+			</p>
+
+			<p>
+				Confirmacion de contraseña: <input
+					class="form-control form-control-lg my-2" type="password"
+					placeholder="Confirmacion" aria-label=".form-control-lg example"
+					name="passwordConfirmation">
+			</p>
+
+			<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+				<button class="btn btn-success me-md-2" type="success">Registrar</button>
+			</div>
+
+		</div>
+	</form>
+
+</body>
+</html>
